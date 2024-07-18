@@ -58,7 +58,7 @@
       <!-- navigation bar -->
       <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="index.html">
-          <img src="images/logo.png" alt="Logo" />
+          <img src="images/gsetlogo1.png" alt="Logo" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -340,10 +340,10 @@
             </p>
             <div class="video_block" data-aos="fade-up" data-aos-duration="1500">
               <img class="thumbnil" src="images/applicationvideothumb.png" alt="image" />
-              <div class="playBtn openModalBtn">
+              <div class="playBtn">
                 <a href="#howitworks" class="popup-youtube play-button play_icon"
                   data-url="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1" data-toggle="modal"
-                  data-target="#myModal" title="XJj2PbenIsU"><img src="images/play_white.png" alt="img" /></a>
+                  data-target="#miModal" title="XJj2PbenIsU"><img src="images/play_white.png" alt="img" /></a>
                 <img class="spin_text" src="images/playvideotext.png" alt="image" />
               </div>
             </div>
@@ -887,7 +887,7 @@
             <div class="logo_side">
               <div class="logo">
                 <a href="#">
-                  <img src="images/ft_logo.png" alt="Logo" />
+                  <img src="images/gsetlogobottom2.png" alt="Logo" />
                 </a>
               </div>
               <div class="news_letter">
@@ -907,7 +907,7 @@
                 </form>
               </div>
               <ul class="contact_info">
-                <li><a href="mailto:">support@example.com</a></li>
+                <li><a href="mailto:">aspire@verdant.com</a></li>
                 <li><a href="tel: ">+1-900-123 4567</a></li>
               </ul>
               <ul class="social_media">
@@ -971,21 +971,25 @@
     </div>
 
     <!-- Video Model Start -->
-    <div class="modal fade youtube-video" id="myModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
+    <div class="modal fade youtube-video" id="miModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document"> <!-- modal-lg for large modal -->
         <div class="modal-content">
           <button id="close-video" type="button" class="button btn btn-default text-right" data-dismiss="modal">
             <i class="icofont-close-line-circled"></i>
           </button>
-          <div class="modal-body">
+          <!-- <div class="modal-body"> -->
             <div id="video-container" class="video-container">
-              <iframe id="youtubevideo" width="640" height="360" allowfullscreen></iframe>
+              <video id="videoPlayer" class="video-player"style="width: 100%" controls>
+                <source src="images/videoclip.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
             </div>
-          </div>
+          <!-- </div> -->
           <div class="modal-footer"></div>
         </div>
       </div>
     </div>
+    
     <!-- Video Model End -->
   </div>
   <!-- Page-wrapper-End -->
@@ -1067,6 +1071,28 @@
         event.stopPropagation();
       });
     });
+
+    //video closebutton
+    $(document).ready(function () {
+      $("#close-video").click(function () {
+        // Pause the video
+        var video = document.getElementById("videoPlayer");
+        if (video) {
+            video.pause();
+            video.currentTime = 0; // Reset video to beginning
+        }
+
+        // Hide the modal
+        $("#miModal").modal("hide");
+        // Adjust opacity of modal backdrop
+        $(".modal-backdrop.show").css("opacity", "0");
+        $('#miModal').on('hidden.bs.modal', function () {
+        // Reset aria-hidden attribute
+        $(this).attr('aria-hidden', 'true');
+    });
+    });
+});
+
   </script>
   <script type="text/javascript">
     (function () {
@@ -1110,13 +1136,13 @@
         emailjs.sendForm('service_qozppuf', 'template_jvjmest', loginForm)
           .then(() => {
             console.log('Login Form SUCCESS!');
-            loginForm.reset(); // Reset form fields
-            $("#myModal").css("display", "none"); // Hide modal (if applicable)
-            showSuccessModal(); // Show success modal (if applicable)
+            loginForm.reset(); 
+            $("#myModal").css("display", "none"); 
+            showSuccessModal(); 
           }, (error) => {
             console.log('Login Form FAILED...', error);
-            $("#myModal").css("display", "none"); // Hide modal (if applicable)
-            showErrorModal(); // Show error modal (if applicable)
+            $("#myModal").css("display", "none"); 
+            showErrorModal(); 
           });
       });
 

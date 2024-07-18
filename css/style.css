@@ -1111,17 +1111,21 @@ header.fixed .navbar {
 }
 
 /* how it works video model   */
-.modal {
-    z-index: 999999;
+
+.youtube-video{
+    position: fixed;
+    z-index: 1050!important;
 }
 
 .modal-backdrop.show {
-    z-index: 99999;
+    /* z-index: 99999; */
+    position: fixed;
+    z-index: 1040 !important;
     opacity: .7;
 }
 
 .youtube-video .modal-dialog {
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
     top: 0;
@@ -1138,10 +1142,11 @@ header.fixed .navbar {
 
 #video-container {
     position: relative;
+    z-index:  1060 !important;
     padding-bottom: 50%;
-    padding-top: 30px;
+    /* padding-top: 30px; */
     height: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 iframe#youtubevideo {
